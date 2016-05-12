@@ -132,18 +132,19 @@
                         <Button Background="Yellow" Foreground="Yellow" Click="OnPenColorChanged" Style="{StaticResource ColorButtonStyle}" Margin="0,0,3,0"/>
                         <CheckBox Content="Eraser" Margin="10,0,3,0" Checked="Eraser_CheckBox_Checked" Unchecked="Eraser_CheckBox_Unchecked"/>
                         </StackPanel>
+
+                        <ink:InkToolbar TargetInkCanvas="{x:Bind inkCanvas}"
+                                        Grid.Row="1" Grid.Column="2"
+                                        VerticalAlignment="Top" 
+                                        HorizontalAlignment="Right">
+
+                        </ink:InkToolbar>
                     
-                </Grid>
+                    </Grid>
             </StackPanel>
                     <Grid x:Name="outputGrid" Margin="0,10,0,0" Background="{ThemeResource SystemControlBackgroundChromeWhiteBrush}">
                         <!-- Inking area -->
-                        <InkCanvas x:Name="inkCanvas"/>
-
-                    <ink:InkToolbar TargetInkCanvas="{x:Bind inkCanvas}" 
-                                    VerticalAlignment="Top" 
-                                    HorizontalAlignment="Right">
-                        
-                    </ink:InkToolbar>
+                    <InkCanvas x:Name="inkCanvas"/>
                 </Grid>
             </StackPanel>
         </Grid>

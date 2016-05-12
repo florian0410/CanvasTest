@@ -17,6 +17,7 @@ using Windows.UI.Xaml.Shapes;
 using Windows.UI.Input.Inking;
 using Windows.Storage;
 using Windows.Storage.Streams;
+using Windows.UI;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -30,6 +31,7 @@ namespace CanvasTest
         const int minPenSize = 2;
         const int penSizeIncrement = 2;
         int penSize;
+        Windows.UI.Color saveColor;
 
         public MainPage()
         {
@@ -130,12 +132,24 @@ namespace CanvasTest
 
         private void Eraser_CheckBox_Checked(object sender, RoutedEventArgs e)
         {
-            inkCanvas.InkPresenter.InputProcessingConfiguration.Mode = InkInputProcessingMode.Erasing;
+            if (inkCanvas != null)
+            {
+                InkDrawingAttributes drawingAttributes = inkCanvas.InkPresenter.CopyDefaultDrawingAttributes();
+                saveColor = drawingAttributes.Color;
+                SolidColorBrush brush_transparent = new SolidColorBrush();
+                brush_transparent.Color = Colors.Transparent;
+
+                drawingAttributes.Color = brush_transparent.Color;
+                inkCanvas.InkPresenter.UpdateDefaultDrawingAttributes(drawingAttributes);
+            }
         }
 
         private void Eraser_CheckBox_Unchecked(object sender, RoutedEventArgs e)
         {
-            inkCanvas.InkPresenter.InputProcessingConfiguration.Mode = InkInputProcessingMode.Inking;
+            InkDrawingAttributes drawingAttributes = inkCanvas.InkPresenter.CopyDefaultDrawingAttributes();
+            SolidColorBrush brush_transparent = new SolidColorBrush();
+            drawingAttributes.Color = saveColor;
+            inkCanvas.InkPresenter.UpdateDefaultDrawingAttributes(drawingAttributes);
         }
 
     }
