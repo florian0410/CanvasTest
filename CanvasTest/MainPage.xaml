@@ -95,7 +95,7 @@
 
                     <TextBlock Text="Pen type / Thickness :"
                                 Margin="0,0,5,0"/>
-                    <ComboBox
+                    <ComboBox  
                                 x:Name="PenType"
                                 Grid.Column="1"
                                 VerticalAlignment="Center"
@@ -103,8 +103,8 @@
                                 Margin="0,0,10,0"
                                 SelectedIndex="0"
                                 SelectionChanged="OnPenTypeChanged">
-                        <ComboBoxItem Content="Ballpoint"/>
-                        <ComboBoxItem Content="Highlighter"/>
+                        <ComboBoxItem Name="default_combobox_item" Content="Ballpoint"/>
+                        <ComboBoxItem Name="highlighter_combobox_item"  Content="Highlighter"/>
                     </ComboBox>
 
                     <ComboBox
@@ -126,19 +126,23 @@
                                 Grid.Row="1" Grid.Column="0"
                                 HorizontalAlignment="Left" VerticalAlignment="Center" />
                     <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="1" Margin="0,5,0,0">
-                        <Button Background="Red"    Foreground="Red"    Click="OnPenColorChanged" Style="{StaticResource ColorButtonStyle}" Margin="0,0,3,0"/>
+                        <Button Name="default_button" Background="Red"    Foreground="Red"    Click="OnPenColorChanged" Style="{StaticResource ColorButtonStyle}" Margin="0,0,3,0"/>
                         <Button Background="Green"  Foreground="Green"  Click="OnPenColorChanged" Style="{StaticResource ColorButtonStyle}" Margin="0,0,3,0"/>
                         <Button Background="Blue"   Foreground="Blue"   Click="OnPenColorChanged" Style="{StaticResource ColorButtonStyle}" Margin="0,0,3,0"/>
                         <Button Background="Yellow" Foreground="Yellow" Click="OnPenColorChanged" Style="{StaticResource ColorButtonStyle}" Margin="0,0,3,0"/>
-                        <CheckBox Content="Eraser" Margin="10,0,3,0" Checked="Eraser_CheckBox_Checked" Unchecked="Eraser_CheckBox_Unchecked"/>
+                            <TextBlock Text="Eraser" Margin="5" />
+                            <CheckBox  Name="Eraser_checkbox" Checked="Eraser_checkbox_Checked" Unchecked="Eraser_checkbox_Unchecked"  Margin="0,0,3,0.8"/>
+                            <Button Content="Clear" Width="65" Margin="0,0,3,0" Click="OnClear"/>
                         </StackPanel>
 
+                    <!-- EN ATTENTE DE L'INTEGRATION DU NOUVEAU PLUGIN, MAJ WINDOWS ANNIVERSARY ETE 2016 
+                    
                         <ink:InkToolbar TargetInkCanvas="{x:Bind inkCanvas}"
                                         Grid.Row="1" Grid.Column="2"
                                         VerticalAlignment="Top" 
                                         HorizontalAlignment="Right">
-
                         </ink:InkToolbar>
+                    -->
                     
                     </Grid>
             </StackPanel>
@@ -149,4 +153,5 @@
             </StackPanel>
         </Grid>
     </Grid>
+    
 </Page>
