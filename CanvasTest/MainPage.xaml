@@ -105,7 +105,8 @@
                                 SelectionChanged="OnPenTypeChanged">
                         <ComboBoxItem Name="default_combobox_item" Content="Ballpoint"/>
                         <ComboBoxItem Name="highlighter_combobox_item"  Content="Highlighter"/>
-                    </ComboBox>
+                        <ComboBoxItem Name="eraser_combo_item"  Content="Eraser"/>
+                        </ComboBox>
 
                     <ComboBox
                                 x:Name="PenThickness"
@@ -130,8 +131,6 @@
                         <Button Background="Green"  Foreground="Green"  Click="OnPenColorChanged" Style="{StaticResource ColorButtonStyle}" Margin="0,0,3,0"/>
                         <Button Background="Blue"   Foreground="Blue"   Click="OnPenColorChanged" Style="{StaticResource ColorButtonStyle}" Margin="0,0,3,0"/>
                         <Button Background="Yellow" Foreground="Yellow" Click="OnPenColorChanged" Style="{StaticResource ColorButtonStyle}" Margin="0,0,3,0"/>
-                            <TextBlock Text="Eraser" Margin="5" />
-                            <CheckBox  Name="Eraser_checkbox" Checked="Eraser_checkbox_Checked" Unchecked="Eraser_checkbox_Unchecked"  Margin="0,0,3,0.8"/>
                             <Button Content="Clear" Width="65" Margin="0,0,3,0" Click="OnClear"/>
                         </StackPanel>
 
